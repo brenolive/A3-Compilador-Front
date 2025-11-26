@@ -1,13 +1,9 @@
-// =====================================
-// SISTEMA DE ABAS
-// =====================================
-
 const tabs = document.querySelectorAll(".tab");
 const panels = document.querySelectorAll(".panel");
 const statusText = document.getElementById("status-text");
 const themeToggle = document.getElementById("theme-toggle");
 
-// Alternar abas
+
 tabs.forEach(tab => {
   tab.addEventListener("click", () => {
     const target = tab.dataset.target;
@@ -29,16 +25,10 @@ function activatePanel(id) {
   });
 }
 
-// Atualiza barra de status
 function setStatus(msg) {
   statusText.textContent = msg;
 }
 
-
-
-// =====================================
-// SISTEMA DE TEMA (LIGHT / DARK MODE)
-// =====================================
 
 (function initTheme() {
   const saved = localStorage.getItem("theme") || "light";
@@ -61,13 +51,6 @@ themeToggle.addEventListener("click", () => {
   applyTheme(isDark ? "light" : "dark");
 });
 
-
-
-// =====================================
-// MOCKS DE ANÁLISE (até integrar com Java)
-// =====================================
-
-// ---- ANÁLISE LÉXICA MOCK ----
 function runLexicalAnalysis() {
   const code = document.getElementById("code").value;
   const reserved = ["var", "inteiro", "real", "se", "senao", "enquanto", "escreva"];
@@ -99,8 +82,6 @@ function runLexicalAnalysis() {
 }
 
 
-
-// ---- ANÁLISE SINTÁTICA MOCK ----
 function runSyntaxAnalysis() {
   const code = document.getElementById("code").value.trim();
   let msg;
@@ -121,9 +102,6 @@ function runSyntaxAnalysis() {
   setStatus("Análise sintática executada (mock).");
 }
 
-
-
-// ---- ANÁLISE SEMÂNTICA MOCK ----
 function runSemanticAnalysis() {
   const msg =
     "Verificação semântica simulada (mock):\n\n" +
@@ -137,11 +115,6 @@ function runSemanticAnalysis() {
   setStatus("Análise semântica executada (mock).");
 }
 
-
-
-// =====================================
-// EXECUÇÃO DO CÓDIGO (mock)
-// =====================================
 function runProgram() {
   const msg =
     "Execução simulada (mock):\n" +
@@ -153,11 +126,6 @@ function runProgram() {
   setStatus("Programa executado (mock).");
 }
 
-
-
-// =====================================
-// COMPILAR TUDO (mock) – será substituído pelo endpoint Java
-// =====================================
 function compileAll() {
   runLexicalAnalysis();
   runSyntaxAnalysis();
@@ -165,3 +133,4 @@ function compileAll() {
 
   setStatus("Compilação completa (pipeline mock).");
 }
+
