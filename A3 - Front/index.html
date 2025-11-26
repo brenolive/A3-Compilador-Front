@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mini Compilador - A3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="logo-area">
+      <div class="logo-circle">C</div>
+      <h1>Mini Compilador</h1>
+    </div>
+
+    <div class="header-right">
+      <div class="group-names">
+        Grupo: Marcela, João Pedro, Diego, Miguel, Breno
+      </div>
+
+      <!-- Botão de tema -->
+      <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+        🌙
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <div class="title">Interface de Compilação</div>
+
+    <div class="workspace">
+      <!-- EDITOR -->
+      <section class="editor-container">
+        <div class="editor-label">Código fonte (pseudocódigo da linguagem)</div>
+
+        <textarea id="code" spellcheck="false">
+// Exemplo de código
+var x: inteiro;
+var y: inteiro;
+
+x = 10;
+y = x + 5;
+
+se (y > 10) {
+    escreva(y);
+} senao {
+    escreva(0);
+}
+        </textarea>
+
+        <div class="buttons">
+          <button class="btn" onclick="compileAll()">Compilar</button>
+          <button class="btn secondary" onclick="runLexicalAnalysis()">Análise Léxica</button>
+          <button class="btn secondary" onclick="runSyntaxAnalysis()">Análise Sintática</button>
+          <button class="btn secondary" onclick="runSemanticAnalysis()">Análise Semântica</button>
+          <button class="btn secondary" onclick="runProgram()">Executar</button>
+        </div>
+      </section>
+
+      <!-- RESULTADOS -->
+      <section class="output-container">
+        <div class="tabs">
+          <div class="tab active" data-target="tokens">Tokens</div>
+          <div class="tab" data-target="ast">AST</div>
+          <div class="tab" data-target="semantics">Semântica</div>
+          <div class="tab" data-target="output">Saída</div>
+        </div>
+
+        <div id="tokens" class="panel active">
+          <div class="panel-title">Resultado da análise léxica</div>
+          <div id="tokens-output">Nenhuma análise executada ainda.</div>
+        </div>
+
+        <div id="ast" class="panel">
+          <div class="panel-title">Árvore Sintática (AST)</div>
+          <div id="ast-output">Nenhuma análise executada ainda.</div>
+        </div>
+
+        <div id="semantics" class="panel">
+          <div class="panel-title">Relatório Semântico</div>
+          <div id="semantics-output">Nenhuma análise executada ainda.</div>
+        </div>
+
+        <div id="output" class="panel">
+          <div class="panel-title">Saída do Programa</div>
+          <div id="output-run">Nenhuma execução realizada ainda.</div>
+        </div>
+
+      </section>
+    </div>
+
+    <!-- STATUS -->
+    <div class="status-bar">
+      <span class="status-label">Status:</span>
+      <span id="status-text">Aguardando código para compilar.</span>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>A3 • Teoria da Computação e Compiladores • 2025/2</span>
+    
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script src="script.js"></script>
+</body>
+</html>
