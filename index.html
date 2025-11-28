@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Compilador</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="dark">
+    <!-- HEADER -->
+    <header class="top-bar">
+        <div class="logo">
+            <div class="logo-icon">c</div>
+            <span>Mini Compilador</span>
+        </div>
+
+        <div class="header-right">
+            <div class="group-info">
+                Marcela, João Pedro, Diego, Miguel, Breno
+            </div>
+
+            <div class="theme-toggle" onclick="toggleTheme()">
+                🌞
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h2>Interface de Compilação</h2>
+
+        <div class="container">
+            <!-- PAINEL DO CÓDIGO -->
+            <div class="code-panel">
+                <h3>• Código fonte (pseudocódigo da linguagem)</h3>
+
+                <textarea id="code" spellcheck="false">
+// Exemplo de código
+var x: inteiro;
+var y: inteiro;
+
+x = 10;
+y = x + 5;
+
+se (y > 10) {
+    escreva(y);
+} senao {
+    escreva(0);
+}
+                </textarea>
+
+                <div class="button-group">
+                    <button onclick="compileAll()" class="primary-btn">Compilar</button>
+                </div>
+            </div>
+
+            <!-- PAINEL DE RESULTADO -->
+            <div class="output-panel">
+                <div class="tabs">
+                    <button class="tab active" onclick="activatePanel('tokens')">Léxica</button>
+                    <button class="tab" onclick="activatePanel('ast')">Sintática</button>
+                    <button class="tab" onclick="activatePanel('semantics')">Semântica</button>
+                    <button class="tab" onclick="activatePanel('output')">Saída</button>
+                </div>
+
+                <div id="tokens" class="result-panel active">
+                    <h4>Análise Léxica</h4>
+                    <pre id="tokens-output">Nenhuma análise executada ainda.</pre>
+                </div>
+
+                <div id="ast" class="result-panel">
+                    <h4>Análise Sintática</h4>
+                    <pre id="ast-output">Nenhuma análise executada ainda.</pre>
+                </div>
+
+                <div id="semantics" class="result-panel">
+                    <h4>Análise Semântica</h4>
+                    <pre id="semantics-output">Nenhuma análise executada ainda.</pre>
+                </div>
+
+                <div id="output" class="result-panel">
+                    <h4>Saída do Programa</h4>
+                    <pre id="output-run">Nenhuma saída gerada ainda.</pre>
+                </div>
+            </div>
+        </div>
+
+        <div id="status-bar">Status: Aguardando código para compilar.</div>
+    </main>
+
+    <footer class="footer">
+        A3 • Teoria da Computação e Compiladores • 2025/2
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
