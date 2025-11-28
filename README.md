@@ -1,7 +1,7 @@
 # A3-Compilador-Front
 Interface gráfica do Mini Compilador (Teoria da Computação e Compiladores)
 
-# 🌐 Mini Compilador — Interface Front-End  
+# Mini Compilador — Interface Front-End  
 A3 • Teoria da Computação e Compiladores • 2025/2
 
 Este repositório contém a **interface gráfica (front-end)** do Mini Compilador desenvolvido pelo grupo.  
@@ -16,7 +16,7 @@ A interface foi desenvolvida em **HTML, CSS e JavaScript puro**, sem frameworks,
 
 ---
 
-## 👥 Integrantes do grupo
+## Integrantes do grupo
 - Marcela  
 - João Pedro  
 - Diego  
@@ -25,7 +25,7 @@ A interface foi desenvolvida em **HTML, CSS e JavaScript puro**, sem frameworks,
 
 ---
 
-# 🖼 Interface
+# Interface
 
 A interface inclui:
 
