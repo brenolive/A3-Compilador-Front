@@ -7,10 +7,10 @@ A3 • Teoria da Computação e Compiladores • 2025/2
 Este repositório contém a **interface gráfica (front-end)** do Mini Compilador desenvolvido pelo grupo.  
 O objetivo é permitir que o usuário digite um código em pseudocódigo, envie para o compilador em Java e visualize:
 
-- ✔ Análise Léxica  
-- ✔ Análise Sintática  
-- ✔ Análise Semântica  
-- ✔ Saída do Programa  
+- Análise Léxica  
+- Análise Sintática  
+- Análise Semântica  
+- Saída do Programa  
 
 A interface foi desenvolvida em **HTML, CSS e JavaScript puro**, sem frameworks, para garantir portabilidade e simplicidade.
 
@@ -34,6 +34,3 @@ A interface inclui:
 - Tema **Light/Dark** com persistência  
 - Abas para exibir cada etapa da compilação  
 - Status bar dinâmica  
-
-Exemplo de layout:
-
