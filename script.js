@@ -49,6 +49,73 @@ async function compileAll() {
     document.getElementById("semantics-output").textContent = "Processando análise semântica...";
     document.getElementById("output-run").textContent = "Processando saída...";
 
+    function tryParseJson(text) {
+        try {
+            return JSON.parse(text);
+        } catch (_) {
+            return null;
+        }
+    }
+
+    function formatTokens(tokens) {
+        if (!Array.isArray(tokens) || tokens.length === 0) return "(sem tokens)";
+        return tokens
+            .map(t => `${t.type}:${t.value}`)
+            .join(" | ");
+    }
+
+    function formatLexico(text) {
+        const data = tryParseJson(text);
+        if (!data) return text;
+        return data
+            .map(item => {
+                const linha = (item.linha ?? "").trim();
+                const header = linha ? `Linha: ${linha}` : "Linha: (vazia)";
+                const tokens = formatTokens(item.tokens);
+                return `${header}\nTokens: ${tokens}`;
+            })
+            .join("\n\n");
+    }
+
+    function formatSintatico(text) {
+        const data = tryParseJson(text);
+        if (!data) return text;
+        return data
+            .map(item => {
+                const linha = (item.linha ?? "").trim();
+                const header = linha ? `Linha: ${linha}` : "Linha: (vazia)";
+                return `${header}\nSintático: ${item.sintatico ?? ""}`;
+            })
+            .join("\n\n");
+    }
+
+    function formatSemantico(text) {
+        const data = tryParseJson(text);
+        if (!data) return text;
+        return data
+            .map(item => {
+                const linha = (item.linha ?? "").trim();
+                const header = linha ? `Linha: ${linha}` : "Linha: (vazia)";
+                return `${header}\nSemântico: ${item.semantico ?? ""}`;
+            })
+            .join("\n\n");
+    }
+
+    function formatSaida(text) {
+        const data = tryParseJson(text);
+        if (!data) return text;
+        return data
+            .map(item => {
+                const linha = (item.linha ?? "").trim();
+                const header = linha ? `Linha: ${linha}` : "Linha: (vazia)";
+                const tokens = formatTokens(item.tokens);
+                const sintatico = item.sintatico ?? "";
+                const semantico = item.semantico ?? "";
+                return `${header}\nTokens: ${tokens}\nSintático: ${sintatico}\nSemântico: ${semantico}`;
+            })
+            .join("\n\n");
+    }
+
     async function post(endpoint, body) {
         const response = await fetch(endpoint, {
             method: "POST",
@@ -66,20 +133,20 @@ async function compileAll() {
     try {
  
         const lexicoText = await post("http://localhost:8080/lexico", code);
-        document.getElementById("tokens-output").textContent = lexicoText;
+        document.getElementById("tokens-output").textContent = formatLexico(lexicoText);
 
      
         const sintaticoText = await post("http://localhost:8080/sintatico", code);
-        document.getElementById("ast-output").textContent = sintaticoText;
+        document.getElementById("ast-output").textContent = formatSintatico(sintaticoText);
 
      
         const semanticoText = await post("http://localhost:8080/semantico", code);
-        document.getElementById("semantics-output").textContent = semanticoText;
+        document.getElementById("semantics-output").textContent = formatSemantico(semanticoText);
 
       
         try {
             const saidaText = await post("http://localhost:8080/analisar", code);
-            document.getElementById("output-run").textContent = saidaText;
+            document.getElementById("output-run").textContent = formatSaida(saidaText);
         } catch (e) {
             document.getElementById("output-run").textContent =
                 "Endpoint /analisar não implementado.";
