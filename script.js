@@ -145,7 +145,7 @@ async function compileAll() {
 
       
         try {
-            const saidaText = await post("http://localhost:8080/analisar", code);
+            const saidaText = await post("http://localhost:8080/resultado", code);
             document.getElementById("output-run").textContent = formatSaida(saidaText);
         } catch (e) {
             document.getElementById("output-run").textContent =

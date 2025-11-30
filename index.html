@@ -36,16 +36,13 @@
 
                 <textarea id="code" spellcheck="false">
 // Exemplo de código
-var x: inteiro;
-var y: inteiro;
+INTEIRO a = 10;
+INTEIRO b = 15;
 
-x = 10;
-y = x + 5;
-
-se (y > 10) {
-    escreva(y);
-} senao {
-    escreva(0);
+SE (a > b) {
+    INTEIRO c = a - b;
+} SENAO {
+    INTEIRO c = a + b;
 }
                 </textarea>
 
@@ -60,7 +57,6 @@ se (y > 10) {
                     <button class="tab active" onclick="activatePanel('tokens')">Léxica</button>
                     <button class="tab" onclick="activatePanel('ast')">Sintática</button>
                     <button class="tab" onclick="activatePanel('semantics')">Semântica</button>
-                    <button class="tab" onclick="activatePanel('output')">Saída</button>
                 </div>
 
                 <div id="tokens" class="result-panel active">
@@ -76,11 +72,6 @@ se (y > 10) {
                 <div id="semantics" class="result-panel">
                     <h4>Análise Semântica</h4>
                     <pre id="semantics-output">Nenhuma análise executada ainda.</pre>
-                </div>
-
-                <div id="output" class="result-panel">
-                    <h4>Saída do Programa</h4>
-                    <pre id="output-run">Nenhuma saída gerada ainda.</pre>
                 </div>
             </div>
         </div>
